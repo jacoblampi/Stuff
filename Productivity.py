@@ -10,8 +10,9 @@ import Tkinter as tk
 
 # Task
 class toDoTask():
-    def __init__(self, zone, timeallotted, duedate, finishdate=""):
+    def __init__(self, zone, task, timeallotted, duedate, finishdate=""):
         self.zone = zone 
+        self.task = task
         self.timeallotted = timeallotted 
         self.duedate = duedate 
         self.finishdate = ""
@@ -56,14 +57,40 @@ class tkinterGUI():
     def add_label_window(self):
         self.addLW = tk.Toplevel(self.master)
         self.addLWFrame = tk.Frame(self.addLW)
-        self.updateText = tk.StringVar()
-        self.addLWFEntry = tk.Entry(self.addLW, textvariable=self.updateText)
+        self.addLWFRow0 = tk.Frame(self.addLWFrame)
+        self.addLWFRow1 = tk.Frame(self.addLWFrame)
+        self.addLWFRow2 = tk.Frame(self.addLWFrame)
+        self.addLWFRow3 = tk.Frame(self.addLWFrame)
+        self.updateText0 = tk.StringVar()
+        self.updateText1 = tk.StringVar()
+        self.updateText2 = tk.StringVar()
+        self.updateText3 = tk.StringVar()
+        self.addLWLabel0 = tk.Label(self.addLWFRow0, text='Entry 0:', width=25, anchor='e')       
+        self.addLWFEntry0 = tk.Entry(self.addLWFRow0, textvariable=self.updateText0)
+        self.addLWLabel1 = tk.Label(self.addLWFRow1, text='Entry 0001:', )       
+        self.addLWFEntry1 = tk.Entry(self.addLWFRow1, textvariable=self.updateText1)
+        self.addLWLabel2 = tk.Label(self.addLWFRow2, text='Entry 02:', )       
+        self.addLWFEntry2 = tk.Entry(self.addLWFRow2, textvariable=self.updateText2)
+        self.addLWLabel3 = tk.Label(self.addLWFRow3, text='Entry 3:', )       
+        self.addLWFEntry3 = tk.Entry(self.addLWFRow3, textvariable=self.updateText3)
         self.addLWUpdateB = tk.Button(self.addLWFrame, text = 'Save and Quit', width = 25, command = self.update_label)
-        self.addLWFEntry.pack()
+        self.addLWLabel0.pack(side=tk.LEFT)
+        self.addLWFEntry0.pack(side=tk.LEFT)
+        self.addLWLabel1.pack(side=tk.LEFT)
+        self.addLWFEntry1.pack(side=tk.LEFT)
+        self.addLWLabel2.pack(side=tk.LEFT)
+        self.addLWFEntry2.pack(side=tk.LEFT)
+        self.addLWLabel3.pack(side=tk.LEFT)
+        self.addLWFEntry3.pack(side=tk.LEFT)
+        self.addLWFRow0.pack()
+        self.addLWFRow1.pack()
+        self.addLWFRow2.pack()
+        self.addLWFRow3.pack()
         self.addLWUpdateB.pack()
         self.addLWFrame.pack()
     def update_label(self):
-        self.label1.set(self.updateText.get())
+        newTask = toDoTask(self.updateText0.get(),self.updateText1.get(),self.updateText2.get(), self.updateText3.get())
+        self.label1.set(newTask.getInfo()[0]+newTask.getInfo()[1]+newTask.getInfo()[2]+newTask.getInfo()[3])
         self.addLW.destroy()
     def close_windows(self):
         self.master.destroy()
