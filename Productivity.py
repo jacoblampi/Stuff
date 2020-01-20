@@ -11,24 +11,19 @@ import Tkinter as tk
 
 # Task
 class ToDoTask():
-    def __init__(self, zone, task, timeallotted, duedate, finishdate=""):
+    def __init__(self, zone="", task="", time="", startdate="", duedate="", finishdate=""):
         self.zone = zone
         self.task = task
-        self.timeallotted = timeallotted
+        self.time = time
+        self.startdate = startdate
         self.duedate = duedate
-        self.finishdate = ""
+        self.finishdate = finishdate
 
     def get_info(self):
-        return [self.zone, self.task, self.timeallotted, self.duedate, self.finishdate]
+        return [self.zone, self.task, self.time, self.duedate, self.startdate, self.finishdate]
 
-    def change_zone(self, newzone):
-        self.zone = newzone
 
-    def change_finish_date(self, date):
-        self.finishdate = date
-
-    # GUI
-
+# GUI
 
 class TKinterGUI():
     def __init__(self, master):
@@ -71,19 +66,19 @@ class TKinterGUI():
         self.addLWFRow1 = tk.Frame(self.addLWFrame)
         self.addLWFRow2 = tk.Frame(self.addLWFrame)
         self.addLWFRow3 = tk.Frame(self.addLWFrame)
-        self.updateText0 = tk.StringVar()
-        self.updateText1 = tk.StringVar()
-        self.updateText2 = tk.StringVar()
-        self.updateText3 = tk.StringVar()
-        self.addLWLabel0 = tk.Label(self.addLWFRow0, text='Entry 0:', width=25, anchor='e')
-        self.addLWFEntry0 = tk.Entry(self.addLWFRow0, textvariable=self.updateText0)
-        self.addLWLabel1 = tk.Label(self.addLWFRow1, text='Entry 0001:', )
-        self.addLWFEntry1 = tk.Entry(self.addLWFRow1, textvariable=self.updateText1)
-        self.addLWLabel2 = tk.Label(self.addLWFRow2, text='Entry 02:', )
-        self.addLWFEntry2 = tk.Entry(self.addLWFRow2, textvariable=self.updateText2)
-        self.addLWLabel3 = tk.Label(self.addLWFRow3, text='Entry 3:', )
-        self.addLWFEntry3 = tk.Entry(self.addLWFRow3, textvariable=self.updateText3)
-        self.addLWUpdateB = tk.Button(self.addLWFrame, text='Save and Quit', width=25, command=self.update_label)
+        self.updateTask = tk.StringVar()
+        self.updateTime = tk.StringVar()
+        self.updateStart = tk.StringVar()
+        self.updateDue = tk.StringVar()
+        self.addLWLabel0 = tk.Label(self.addLWFRow0, text='Task Name: ', width=25, anchor='e')
+        self.addLWFEntry0 = tk.Entry(self.addLWFRow0, textvariable=self.updateTask)
+        self.addLWLabel1 = tk.Label(self.addLWFRow1, text='Time Allowed (Hr): ', width=25, anchor='e')
+        self.addLWFEntry1 = tk.Entry(self.addLWFRow1, textvariable=self.updateTime)
+        self.addLWLabel2 = tk.Label(self.addLWFRow2, text='Start Date (MM/DD): ', width=25, anchor='e')
+        self.addLWFEntry2 = tk.Entry(self.addLWFRow2, textvariable=self.updateStart)
+        self.addLWLabel3 = tk.Label(self.addLWFRow3, text='Due Date (MM/DD): ', width=25, anchor='e')
+        self.addLWFEntry3 = tk.Entry(self.addLWFRow3, textvariable=self.updateDue)
+        self.addLWUpdateB = tk.Button(self.addLWFrame, text='Save and Quit', width=25, command=self.add_task)
         self.addLWLabel0.pack(side=tk.LEFT)
         self.addLWFEntry0.pack(side=tk.LEFT)
         self.addLWLabel1.pack(side=tk.LEFT)
@@ -98,12 +93,13 @@ class TKinterGUI():
         self.addLWFRow3.pack()
         self.addLWUpdateB.pack()
         self.addLWFrame.pack()
-
-    def update_label(self):
-        newtask = ToDoTask(self.updateText0.get(), self.updateText1.get(), self.updateText2.get(),
-                           self.updateText3.get())
-        self.label1.set(newtask.get_info()[0] + newtask.get_info()[1] + newtask.get_info()[2] + newtask.get_info()[3])
-        self.addLW.destroy()
+#def __init__(self, zone="", task="", time="", startdate="", duedate="", finishdate=""):
+    def add_task(self):
+        newtask = ToDoTask("Initial",self.updateTask.get(),self.updateTime.get(),self.updateStart.get(),self.updateDue.get())
+        ##################
+        #########self.label1.set(newtask.get_info()[0] + newtask.get_info()[1] + newtask.get_info()[2] + newtask.get_info()[3])
+        ##################Updating task list goes here
+        self.addLW.destroy()        
 
     def close_windows(self):
         self.master.destroy()
