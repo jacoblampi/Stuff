@@ -109,26 +109,44 @@ gearlist.append(Gear('Narg Body','Body',{'Evade Dist':2,'Expert':3},1,4,'Bladema
 gearlist.append(Gear('Narg Arms','Arms',{'Evade Dist':1,'Expert':3},2,4,'Blademaster'))
 gearlist.append(Gear('Narg Legs','Legs',{},3,4,'Blademaster'))
 gearlist.append(Gear('Narg Feet','Feet',{'Evade Dist':4},1,4,'Blademaster'))
-#Ceanataur
-gearlist.append(Gear('Cean Head','Head',{'Sharpness':1,'Expert':5},1,4,'Blademaster'))
-gearlist.append(Gear('Cean Body','Body',{'Sharpness':2,'Expert':2},0,4,'Blademaster'))
-gearlist.append(Gear('Cean Arms','Arms',{'Sharpness':4},1,4,'Blademaster'))
-gearlist.append(Gear('Cean Legs','Legs',{'Sharpness':2,'Expert':3},0,4,'Blademaster'))
-gearlist.append(Gear('Cean Feet','Feet',{'Sharpness':1,'Expert':3},1,4,'Blademaster'))
-#Jaggi
-gearlist.append(Gear('Jaggi Head','Head',{'Attack':3,'Fire Atk':1},0,4,'Blademaster'))
-gearlist.append(Gear('Jaggi Body','Body',{'Attack':3},0,4,'Blademaster'))
-gearlist.append(Gear('Jaggi Arms','Arms',{'Expert':4},0,4,'Blademaster'))
-gearlist.append(Gear('Jaggi Legs','Legs',{'Attack':4},1,4,'Blademaster'))
-gearlist.append(Gear('Jaggi Feet','Feet',{'Expert':3},2,4,'Blademaster'))
+#Ceanataur/HR
+# gearlist.append(Gear('Cean Head','Head',{'Sharpness':1,'Expert':5},1,4,'Blademaster'))
+gearlist.append(Gear('Cean Head S','Head',{'Sharpness':1,'Expert':6},1,4,'Blademaster'))
+# gearlist.append(Gear('Cean Body','Body',{'Sharpness':2,'Expert':2},0,4,'Blademaster'))
+gearlist.append(Gear('Cean Body S','Body',{'Sharpness':2,'Expert':3},0,4,'Blademaster'))
+# gearlist.append(Gear('Cean Arms','Arms',{'Sharpness':4},1,4,'Blademaster'))
+gearlist.append(Gear('Cean Arms S','Arms',{'Sharpness':4,'Expert':1},1,4,'Blademaster'))
+# gearlist.append(Gear('Cean Legs','Legs',{'Sharpness':2,'Expert':3},0,4,'Blademaster'))
+gearlist.append(Gear('Cean Legs S','Legs',{'Sharpness':2,'Expert':4},0,4,'Blademaster'))
+# gearlist.append(Gear('Cean Feet','Feet',{'Sharpness':1,'Expert':3},1,4,'Blademaster'))
+gearlist.append(Gear('Cean Feet S','Feet',{'Sharpness':1,'Expert':4},1,4,'Blademaster'))
+#Chaos/HR
+gearlist.append(Gear('Chaoshroom','Head',{'Status':3},1,4,'Blademaster'))
+gearlist.append(Gear('Chaos Plate','Body',{'Status':2},2,6,'Blademaster'))
+gearlist.append(Gear('Chaos Archbun','Head',{'Status':4},1,6,'Blademaster'))
+gearlist.append(Gear('Chaos Archplate','Body',{'Status':2},3,6,'Blademaster'))
+#Nerscylla
+gearlist.append(Gear('Nerscylla Helm','Head',{'Status':2},1,6,'Blademaster'))
+gearlist.append(Gear('Nerscylla Mail','Body',{'Status':1},0,6,'Blademaster'))
+gearlist.append(Gear('Nerscylla Guards','Arms',{'Status':3},1,6,'Blademaster'))
+gearlist.append(Gear('Nerscylla Greaves','Feet',{'Status':3},1,6,'Blademaster'))
+#Insects
+gearlist.append(Gear('Bnahabra Suit S','Body',{'Status':3,'Sharpness':1},0,6,'Blademaster'))
+gearlist.append(Gear('Bnahabra Coil S','Legs',{'Status':4},1,6,'Blademaster'))
+gearlist.append(Gear('Vespoid Greaves S','Feet',{'Status':3},2,6,'Blademaster'))
+gearlist.append(Gear('Jaggi Gauntlets S','Arms',{'Expert':6},0,6,'Blademaster'))
+gearlist.append(Gear('Jaggi Boots S','Feet',{'Expert':4},2,6,'Blademaster'))
+
 #Gems
 gemlist = [] 
 #Tier 1
 gemlist.append(Gem('Expert 1',{'Expert':1},1,2))
 gemlist.append(Gem('Sharpness 1',{'Sharpness':1},1,2))
 gemlist.append(Gem('Evade Dist 1',{'Evade Dist':1},1,2))
+gemlist.append(Gem('Status 1',{'Status':1},1,2))
 #Tier 2
 gemlist.append(Gem('Expert 2',{'Expert':3},2,6))
+gemlist.append(Gem('Status 2',{'Status':3},2,6))
 #Tier 3
 gemlist.append(Gem('Expert 3',{'Expert':5},3,8))
 gemlist.append(Gem('Sharpness 3',{'Sharpness':4},3,8))
@@ -138,14 +156,15 @@ skilllist = []
 skilllist.append(Skill('Evade Dist', {'Lv1':10}))
 skilllist.append(Skill('Sharpness', {'Lv1':10}))
 skilllist.append(Skill('Expert', {'Lv1':10,'Lv2':15,'Lv3':20}))
+skilllist.append(Skill('Status',{'Lv1':10,'Lv2':15}))
 #Charm
 #equippedcharm = Charm({'Expert':3},1)
-equippedcharm = Charm({'Expert':4},0)
+equippedcharm = Charm({'Expert':3,'Status':4},0)
 
 
 #State desired skills 
 # skilldes = {'Expert':'Lv1','Sharpness':'Lv1','Evade Dist':'Lv1'}
-skilldes = {'Expert':'Lv3','Evade Dist':'Lv1'}
+skilldes = {'Evade Dist':'Lv1','Status':'Lv2','Expert':'Lv3'}
 
 #Determine Rank Cutoff
 rankcutoff = 6
