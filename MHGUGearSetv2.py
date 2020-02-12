@@ -39,6 +39,19 @@ class Gear():
         self.slotsused = 0
         self.slotsopen = self.slotsmax
 
+    def gemstring(self):
+        gemstr = '[ '
+        ii = 0
+        while ii < self.slotsmax:
+            if ii < len(self.gems):
+                gemstr += ' -' + self.gems[ii].name + '- '
+                ii += self.gems[ii].slotsreq
+            else:
+                gemstr += ' --- '
+                ii += 1
+        gemstr += ' ]'
+        return gemstr
+
 
 class Gem():
     def __init__(self, name='', skills={}, slotsreq=0, rankreq=0):
@@ -93,6 +106,17 @@ class GearSet():
         self.gs[piecekey].removegems()
         self.gsskills = self.setskills()
 
+    def showgs(self):
+        print self.gs['Head'].name + ' // ' + self.gs['Head'].gemstring()
+        print self.gs['Body'].name + ' // ' + self.gs['Body'].gemstring()
+        print self.gs['Arms'].name + ' // ' + self.gs['Arms'].gemstring()
+        print self.gs['Legs'].name + ' // ' + self.gs['Legs'].gemstring()
+        print self.gs['Feet'].name + ' // ' + self.gs['Feet'].gemstring()
+        print self.gsskills
+
+################################################################################
+## GUI
+################################################################################
 
 
 
@@ -114,7 +138,7 @@ gearlist.append(Gear('Cean Body','Body',{'Sharpness':2,'Expert':2},0,4,'Blademas
 
 testgs2 = GearSet(gearlist[0], gearlist[1], gearlist[2], gearlist[3], gearlist[4])
 
-print testgs2.gsskills
+# print testgs2.gsskills
 # print testgs2.gsslots
 # print testgs2.gsslotsopen
 # for key in testgs.gs:
@@ -124,12 +148,11 @@ gemlist = []
 #Tier 1
 gemlist.append(Gem('Sharpness 1',{'Sharpness':1},1,2))
 gemlist.append(Gem('Expert 1',{'Expert':1},1,2))
+gemlist.append(Gem('Expert 2',{'Expert':3},2,6))
 
 testgear = gearlist[0]
-testgem = gemlist[0]
+testgem = gemlist[2]
 
-testgs2.addgem(testgem, 'Head')
-print testgs2.gsskills
+# testgs2.addgem(testgem, 'Legs')
+testgs2.showgs()
 
-testgs2.removegems('Head')
-print testgs2.gsskills
